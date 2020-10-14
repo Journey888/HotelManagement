@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+
+<configuration>
+
+	<!-- 主配置文件去读取对应的Properties文件 -->
+	<properties resource="db.properties" /> 
+	
+	<!-- 别名 -->
+	<typeAliases>
+		<!-- type:实体类        alias：别名 
+		     别名不区分大小写  -->
+		<typeAlias type="com.HM.entity.FStuff" alias="FStuff"/>
+	</typeAliases>
+	
+	<environments default="development">
+		<!-- 第一个数据库环境： mysql -->
+		<environment id="development">
+			<!-- 默认数据库事务工具 ：jdbc -->
+			<transactionManager type="JDBC" />
+			<!-- 数据源 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}"/>
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- 所有的映射 -->
+	<mappers>
+		<!-- 自动扫描包 -->
+		<package name="com.HM.dao"/>
+	</mappers>
+	
+</configuration>
